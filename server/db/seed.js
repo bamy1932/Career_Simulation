@@ -56,18 +56,6 @@ async function seed() {
       )
     );
 
-    await Promise.all(
-      [...Array(10)].map((_, i) =>
-        prisma.comments.createMany({
-          data: {
-            comment: faker.lorem.paragraph(2),
-            userId: (i % 5) + 1,
-            reviewId: (i % 5) + 1,
-          },
-        })
-      )
-    );
-
     console.log("Database is seeded.");
   } catch (err) {
     console.error(err);
